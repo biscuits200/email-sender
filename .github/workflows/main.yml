@@ -1,25 +1,18 @@
-name: Run Python script every 5 minutes
-
-on:
-  schedule:
-    - cron: "*/5 * * * *"  # каждые 15 минут (UTC)
-  workflow_dispatch:
-
 jobs:
   run-script:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./email-sender
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-
       - name: Install dependencies
         run: pip install -r requirements.txt
-
       - name: Run script
         env:
           GOOGLE_CREDENTIALS_JSON: ${{ secrets.GOOGLE_CREDENTIALS_JSON }}
