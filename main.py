@@ -1,3 +1,4 @@
+import sys
 import gspread
 from google.oauth2.service_account import Credentials
 import smtplib
@@ -17,13 +18,17 @@ PASSWORD = "hmkz cumc odlh qqby"
 RECEIVER_EMAIL = "katya.efremova.0404@mail.ru"
 
 # --- ПОДКЛЮЧЕНИЕ К GOOGLE SHEETS ---
+if len(sys.argv) < 2:
+    print("❌ Укажите путь к файлу учетных данных в качестве аргумента.")
+    sys.exit(1)
+
+creds_path = sys.argv[1]
+
 scopes = [
     'https://www.googleapis.com/auth/spreadsheets',
     'https://www.googleapis.com/auth/drive'
 ]
-credentials = Credentials.from_service_account_file(
-    "precise-rune-463409-s6-2579aef7d5ac.json", scopes=scopes
-)
+credentials = Credentials.from_service_account_file(creds_path, scopes=scopes)
 
 client = gspread.authorize(credentials)
 sheet = client.open(SPREADSHEET_NAME).sheet1
