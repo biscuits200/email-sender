@@ -5,6 +5,20 @@ import smtplib
 import ssl
 from email.message import EmailMessage
 
+import os
+
+# Берем переменные из окружения
+SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
+PASSWORD = os.environ.get("EMAIL_PASSWORD")
+RECEIVER_EMAIL = os.environ.get("RECEIVER_EMAIL")
+
+# === ДЕБАГ ПЕЧАТЬ (безопасно) ===
+print("\n=== ПРОВЕРКА СЕКРЕТОВ ===")
+print(f"SENDER_EMAIL: {SENDER_EMAIL}")
+print(f"EMAIL_PASSWORD: {'*' * len(PASSWORD) if PASSWORD else '[ПУСТО]'}")
+print(f"RECEIVER_EMAIL: {RECEIVER_EMAIL}")
+
+
 # --- НАСТРОЙКИ GOOGLE ТАБЛИЦЫ ---
 SPREADSHEET_NAME = "Contacts"
 COLUMN_NAME_FOR_EMAIL = "Имя"
