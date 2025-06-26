@@ -108,3 +108,8 @@ try:
     print("\n✅ Письмо успешно отправлено")
 except Exception as e:
     print(f"\n❌ Ошибка отправки письма: {e}")
+
+with open("creds.json") as f:
+    print("\n=== JSON файл ===")
+    print(f.read()[:500])  # первые 500 символов
+
