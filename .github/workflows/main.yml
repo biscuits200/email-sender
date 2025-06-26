@@ -5,13 +5,15 @@ on:
     branches:
       - main
   schedule:
-    - cron: '*/5 * * * *'  # каждые 5 минут
-      
+    - cron: '*/5 * * * *'  # Каждые 5 минут
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
+      - name: Echo check
+        run: echo "CRON TRIGGERED"
+
       - name: Checkout repo
         uses: actions/checkout@v3
 
