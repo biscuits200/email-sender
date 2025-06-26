@@ -112,4 +112,5 @@ except Exception as e:
 with open("creds.json") as f:
     print("\n=== JSON файл ===")
     print(f.read()[:500])  # первые 500 символов
+<!-- trigger cron test -->
 
