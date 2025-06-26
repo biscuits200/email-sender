@@ -5,7 +5,6 @@ import smtplib
 import ssl
 from email.message import EmailMessage
 import os
-
 # Берем переменные из окружения
 SENDER_EMAIL = os.environ.get("SENDER_EMAIL")
 PASSWORD = os.environ.get("EMAIL_PASSWORD")
